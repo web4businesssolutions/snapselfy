@@ -8,11 +8,11 @@ export default defineConfig({
     tailwindcss(),
     react()
   ],
-  server: {
-    port: 5173,
-    host: 'localhost',
-    strictPort: true
-  },
+  // server: {
+  //   port: 5173,
+  //   host: 'localhost',
+  //   strictPort: true
+  // },
   build: {
     outDir: 'dist'
   },

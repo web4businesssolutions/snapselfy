@@ -29,8 +29,9 @@ const app = express();
 // ✅ Enable CORS for frontend origin
 app.use(cors({
       // origin: 'https://selfy-snap-1-7kn9.onrender.com',
-    origin: ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175'],
+    // origin: ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175'],
     // origin: ['https://www.selfysnap.com', 'https://selfy-1wjo.onrender.com']
+    origin: 'https://snapselfy.vercel.app/',
 
     credentials: true,
 }));
