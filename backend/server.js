@@ -28,11 +28,19 @@ const app = express();
 
 // ✅ Enable CORS for frontend origin
 app.use(cors({
-      // origin: 'https://selfy-snap-1-7kn9.onrender.com',
-    // origin: ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175'],
-    // origin: ['https://www.selfysnap.com', 'https://selfy-1wjo.onrender.com']
-    origin: 'https://snapselfy.vercel.app/',
-
+    origin: function (origin, callback) {
+        // Allow production and all Vercel preview domains
+        const allowedOrigins = [
+            'https://snapselfy.vercel.app',
+        ];
+        // Allow Vercel preview deployments
+        const vercelPreviewRegex = /^https:\/\/snapselfy-git-main-[^.]+\.vercel\.app$/;
+        if (!origin || allowedOrigins.includes(origin) || vercelPreviewRegex.test(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     credentials: true,
 }));
 
